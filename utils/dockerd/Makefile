@@ -153,10 +153,6 @@ define Package/dockerd/install
 	$(INSTALL_DATA) ./files/etc/hotplug.d/net/br-netfilter \
 		$(1)/etc/hotplug.d/net/10-docker-br-netfilter
 
-	$(INSTALL_DIR) $(1)/etc/uci-defaults
-	$(INSTALL_DATA) ./files/etc/uci-defaults/16_docker-netifd-migrate2 \
-		$(1)/etc/uci-defaults/16_docker-netifd-migrate2
-
 	$(INSTALL_DIR) $(1)/lib/fstab.d
 	$(INSTALL_DATA) ./files/lib/fstab.d/dockerd.sh $(1)/lib/fstab.d/dockerd.sh
 
