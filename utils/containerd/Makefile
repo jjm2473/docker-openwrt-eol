@@ -44,7 +44,7 @@ MAKE_FLAGS += \
 	REVISION=$(PKG_SOURCE_VERSION) \
 	PREFIX=""
 
-MAKE_FLAGS += BUILDTAGS='no_btrfs'
+MAKE_FLAGS += BUILDTAGS='no_btrfs no_devmapper'
 
 # Reset golang-package.mk overrides so we can use the Makefile
 Build/Compile=$(call Build/Compile/Default)
