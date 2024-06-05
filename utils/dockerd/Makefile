@@ -119,7 +119,7 @@ define Build/Prepare
 	)
 endef
 
-BUILDTAGS:=
+BUILDTAGS:=exclude_graphdriver_btrfs exclude_graphdriver_devicemapper
 
 define Build/Compile
 	( \
