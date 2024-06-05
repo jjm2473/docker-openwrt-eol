@@ -44,11 +44,7 @@ MAKE_FLAGS += \
 	REVISION=$(PKG_SOURCE_VERSION) \
 	PREFIX=""
 
-ifeq ($(CONFIG_SELINUX),y)
-MAKE_FLAGS += BUILDTAGS='selinux'
-else
 MAKE_FLAGS += BUILDTAGS=''
-endif
 
 # Reset golang-package.mk overrides so we can use the Makefile
 Build/Compile=$(call Build/Compile/Default)
