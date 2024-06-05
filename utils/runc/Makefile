@@ -27,7 +27,7 @@ define Package/runc
   CATEGORY:=Utilities
   TITLE:=runc container runtime
   URL:=https://www.opencontainers.org/
-  DEPENDS:=$(GO_ARCH_DEPENDS) +KERNEL_SECCOMP_FILTER:libseccomp
+  DEPENDS:=$(GO_ARCH_DEPENDS)
 endef
 
 define Package/runc/description
@@ -44,12 +44,6 @@ MAKE_FLAGS += EXTRA_FLAGS='-buildmode=default'
 endif
 
 BUILDTAGS:=
-ifeq ($(CONFIG_KERNEL_SECCOMP_FILTER),y)
-BUILDTAGS += seccomp
-endif
-ifeq ($(CONFIG_SELINUX),y)
-BUILDTAGS += selinux
-endif
 MAKE_FLAGS += BUILDTAGS='$(BUILDTAGS)'
 
 # Reset golang-package.mk overrides so we can use the Makefile
