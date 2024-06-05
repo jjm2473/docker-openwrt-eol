@@ -3,6 +3,17 @@
 USE_PROCD=1
 START=99
 
+if ! eval 'type extra_command' 2>/dev/null >/dev/null; then
+	extra_command() {
+		local cmd="$1"
+		local help="$2"
+
+		local extra="$(printf "%-16s%s" "${cmd}" "${help}")"
+		EXTRA_HELP="${EXTRA_HELP}\t${extra}\n"
+		EXTRA_COMMANDS="${EXTRA_COMMANDS} ${cmd}"
+	}
+fi
+
 extra_command "uciadd" "<ignored> <device> <zone> Add docker bridge configuration to firewall uci config"
 extra_command "ucidel" "<ignored> <device> <zone> Delete docker bridge configuration from firewall uci config"
 
