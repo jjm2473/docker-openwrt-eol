@@ -41,7 +41,6 @@ define Package/dockerd
     +iptables-mod-extra \
     +IPV6:ip6tables \
     +IPV6:kmod-ipt-nat6 \
-    +KERNEL_SECCOMP:libseccomp \
     +kmod-ipt-nat \
     +kmod-ipt-physdev \
     +kmod-nf-ipvs \
@@ -122,12 +121,6 @@ define Build/Prepare
 endef
 
 BUILDTAGS:=
-ifeq ($(KERNEL_SECCOMP),y)
-BUILDTAGS += seccomp
-endif
-ifeq ($(CONFIG_SELINUX),y)
-BUILDTAGS += selinux
-endif
 
 define Build/Compile
 	( \
