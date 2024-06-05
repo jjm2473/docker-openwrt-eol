@@ -46,8 +46,7 @@ define Package/dockerd
     +kmod-nf-ipvs \
     +kmod-veth \
     +libnetwork \
-    +tini \
-    +uci-firewall
+    +tini
   USERID:=docker:docker
   MENU:=1
 endef
