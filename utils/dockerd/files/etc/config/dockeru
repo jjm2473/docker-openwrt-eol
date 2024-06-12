@@ -1,0 +1,3 @@
+
+config globals 'globals'
+#	option bin_root '/mnt/usb/opt/docker/root'

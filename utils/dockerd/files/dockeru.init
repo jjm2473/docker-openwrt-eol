@@ -1,0 +1,20 @@
+#!/bin/sh /etc/rc.common
+
+START=98
+
+start() {
+	local bin_root binary
+	config_load 'dockeru'
+	config_get bin_root globals bin_root
+	[ -n "$bin_root" ] || return 1
+	[ -d "$bin_root/usr" ] || return 1
+	for binary in `cd "$bin_root" && find usr -mindepth 1 -path 'usr/lib/opkg' -prune -o ! -path 'usr/lib/opkg' -print`
+	do
+		if [ -d "$bin_root/$binary" ]; then
+			mkdir -p "/$binary"
+		else
+			[ -r "/$binary" ] || ln -sf "$bin_root/$binary" "/$binary"
+		fi
+	done
+	return 0
+}

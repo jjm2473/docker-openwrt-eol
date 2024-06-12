@@ -207,6 +207,8 @@ process_config() {
 start_service() {
 	local nofile=$(cat /proc/sys/fs/nr_open)
 
+	/etc/init.d/dockeru start || return 1
+
 	process_config
 
 	procd_open_instance
